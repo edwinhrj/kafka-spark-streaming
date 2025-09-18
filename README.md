@@ -1,10 +1,6 @@
 # kafka-spark-streaming
 
-# Streaming User Data Pipeline
-
-## Overview
 This project implements a simple daily streaming pipeline where an Airflow DAG automates the extraction of user data from the RandomUser API and streams it to a Kafka topic. Spark Structured Streaming then consumes the Kafka events, transforms them into structured rows, and writes them into Cassandra for storage.
-
 
 ## Full Data Flow
 
