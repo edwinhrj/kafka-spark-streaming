@@ -2,6 +2,13 @@ import json
 import requests
 from kafka import KafkaProducer
 
+# import airflow packages to automate the streaming of data from the api
+from airflow import DAG
+from airflow.operators.python import PythonOperator
+from datetime import datetime
+import time
+import logging
+
 def get_data():
     # data_json is the raw json object from the API
     data_json = requests.get("https://randomuser.me/api/")
