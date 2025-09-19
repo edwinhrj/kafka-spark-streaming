@@ -35,7 +35,7 @@ The pipeline fetches random user data from an API, streams it into Kafka, proces
   - `last_name`
   - `email`
 
-### 1.4 Cassandra (Sink / Storage)
+### 1.4 Cassandra db
 - Spark writes those structured rows into Cassandra table:
   - **Keyspace** → `spark_streams`
   - **Table** → `created_users`
