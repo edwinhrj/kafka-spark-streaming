@@ -1,7 +1,7 @@
 # Real-Time Streaming Data Pipeline (Kafka + Spark + Cassandra)
 
 ## Overview
-This project demonstrates a streaming data pipeline built with:
+This experimental project simulates a streaming data pipeline built with:
 
 - **Apache Kafka** – message broker for streaming events  
 - **Apache Spark Streaming** – real-time data processing  
