@@ -28,7 +28,7 @@ The pipeline fetches random user data from an API, streams it into Kafka, proces
 - Keeps them durable and makes them available for consumers like Spark.
 
 ### 1.3 Spark Structured Streaming (Consumer)
-- Connects to Kafka (`broker:29092`).
+- Connects to Kafka
 - Continuously reads events from topic **`users_created`**.
 - Parses the JSON string into a proper **DataFrame** with columns:
   - `first_name`
@@ -46,8 +46,8 @@ The pipeline fetches random user data from an API, streams it into Kafka, proces
 ## 2. Streaming Characteristics
 
 ### ✅ Real-Time Capabilities
-- Kafka → Spark → Cassandra integration is **truly streaming**.
-- Spark’s `readStream` and `writeStream` APIs enable continuous ingestion and processing.
+- Kafka → Spark → Cassandra integration is considred streaming.
+- Spark enable continuous ingestion and processing.
 - As soon as Kafka receives a message, Spark processes it and writes to Cassandra with **low latency**.
 
 ### ⚠️ Current Limitation
