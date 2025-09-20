@@ -8,7 +8,7 @@ This experimental project simulates a streaming data pipeline built with:
 - **Apache Cassandra** – distributed NoSQL database for storage  
 - **Apache Airflow** – task scheduler for orchestrating the data producer  
 
-The pipeline fetches random user data from an API, streams it into Kafka, processes it with Spark, and stores it in Cassandra.
+The pipeline fetches random user data from an API, streams it into Kafka, processes it with Spark, and stores it in Cassandra. All the above containers run in Docker containers.
 
 ---
 
