@@ -58,7 +58,7 @@ The pipeline fetches random user data from an API, streams it into Kafka, proces
 1. start up Docker on you machine
 2. run `docker compose up -d`
 3. run `docker ps` there should be 11 containers running
-4. Access Airflow Web UI (for monitoring DAGs) at http://localhost:8080 
+4. Access Airflow Web UI (for monitoring DAGs) at http://localhost:8080. 'admin' for both username and password
 <img width="1903" height="400" alt="image" src="https://github.com/user-attachments/assets/a6d97813-071d-4dca-bf8e-163bac475ec1" />
 
 5. Manually trigger the Airflow DAG (just to see the results)
