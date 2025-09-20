@@ -146,7 +146,7 @@ services:
   # Spark Ecosystem
   # -------------------
   spark-master:
-    image: bitnami/spark:latest
+    image: bitnami/spark:3.4.1
     command: bin/spark-class org.apache.spark.deploy.master.Master
     ports:
       - "9090:8080"
@@ -155,7 +155,7 @@ services:
       - confluent
 
   spark-worker:
-    image: bitnami/spark:latest
+    image: bitnami/spark:3.4.1
     command: bin/spark-class org.apache.spark.deploy.worker.Worker spark://spark-master:7077
     depends_on:
       - spark-master
@@ -164,6 +164,19 @@ services:
       SPARK_WORKER_CORES: 2
       SPARK_WORKER_MEMORY: 1g
       SPARK_MASTER_URL: spark://spark-master:7077
+    networks:
+      - confluent
+
+  # Spark Streaming Job (runs spark_stream.py inside Docker)
+  spark-streaming:
+    build:
+      context: .
+      dockerfile: spark/Dockerfile
+    depends_on:
+      - spark-master
+      - spark-worker
+      - broker
+      - cassandra_db
     networks:
       - confluent
 
@@ -181,7 +194,9 @@ services:
       CASSANDRA_USERNAME: cassandra
       CASSANDRA_PASSWORD: cassandra
     networks:
-      - confluent
+      confluent:
+        aliases:
+          - cassandra
 
 # -------------------
 # Network
