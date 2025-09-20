@@ -12,7 +12,7 @@ The pipeline fetches random user data from an API, streams it into Kafka, proces
 
 ---
 
-## 1. Pipeline Components
+## 1. Pipeline Workflow
 
 ### 1.1 Kafka Producer (automated by Airflow DAG)
 - Airflow runs the `stream_data()` task **once per day**.
@@ -53,4 +53,19 @@ The pipeline fetches random user data from an API, streams it into Kafka, proces
 ### ⚠️ Current Limitation
 - The **producer** runs only once per day for 60 seconds (scheduled via Airflow).  
 - This means the pipeline processes data in short bursts rather than **24/7 continuous streaming**.
+
+## 3. Run the project
+1. start up Docker on you machine
+2. run `docker compose up -d`
+3. run `docker ps` there should be 11 containers running
+4. Access Airflow Web UI (for monitoring DAGs) at http://localhost:8080 
+<img width="1903" height="400" alt="image" src="https://github.com/user-attachments/assets/a6d97813-071d-4dca-bf8e-163bac475ec1" />
+5. Manually trigger the Airflow DAG (just to see the results)
+6. Access Spark Master UI at http://localhost:9090 to check its running
+<img width="1920" height="483" alt="image" src="https://github.com/user-attachments/assets/9ea7c450-7384-4119-bb40-33ec3a3930ee" />
+7. run `docker compose exec -it cassandra_db cqlsh -u cassandra -p cassandra`
+8. run `USE spark_streams; SELECT * FROM created_users;`
+<img width="438" height="184" alt="image" src="https://github.com/user-attachments/assets/d6e6e240-f81a-4afc-9b22-0a34ef334c39" />
+
+
 
